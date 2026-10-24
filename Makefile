@@ -13,11 +13,9 @@ AR := ar
 ODIR := build
 SDIR := src
 
-# Buscamos automáticamente el archivo link.x dentro del SDK
-LINK_SCRIPT := $(shell find $(PS4SDK) -name "link.x" | head -n 1)
-
 CFLAGS := -target x86_64-pc-freebsd-elf -fPIC -funwind-tables -c -O2 -std=gnu11
-LDFLAGS := -m elf_x86_64 -pie --script $(LINK_SCRIPT) --eh-frame-hdr
+# AQUI EL CAMBIO: quitamos --script y usamos -shared
+LDFLAGS := -m elf_x86_64 -shared --eh-frame-hdr
 
 all: $(TargetFile)
 
