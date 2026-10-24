@@ -13,8 +13,9 @@ jobs:
       - name: Clonar código
         uses: actions/checkout@v4
 
-      - name: Compilar usando Docker PS4SDK
+      - name: Dar permisos y Compilar usando Docker
         run: |
+          chmod 777 -R .
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace ps4dev/ps4sdk:latest bash -c "make clean && make"
 
       - name: Subir archivo PRX compilado
