@@ -8,17 +8,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ps4dev/ps4sdk:latest
 
     steps:
       - name: Clonar código
         uses: actions/checkout@v4
 
-      - name: Compilar con Makefile
+      - name: Compilar usando Docker PS4SDK
         run: |
-          make clean
-          make
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace ps4dev/ps4sdk:latest bash -c "make clean && make"
 
       - name: Subir archivo PRX compilado
         uses: actions/upload-artifact@v4
