@@ -7,8 +7,9 @@ OutPath := release
 TargetFile := $(OutPath)/$(target).prx
 ObjectFiles := src/main.o
 
-CC := gcc
-CXX := g++
+# Aquí está el cambio principal: usamos clang en lugar de gcc
+CC := clang
+CXX := clang++
 AR := ar
 ODIR := build
 SDIR := src
