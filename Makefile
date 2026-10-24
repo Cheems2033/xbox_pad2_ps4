@@ -5,7 +5,7 @@ endif
 target := xbox_pad
 OutPath := release
 TargetFile := $(OutPath)/$(target).prx
-ObjectFiles := src/main.o
+ObjectFiles := build/main.o
 
 # Aquí está el cambio principal: usamos clang en lugar de gcc
 CC := clang
